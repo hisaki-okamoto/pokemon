@@ -5,7 +5,7 @@ type Pokemon = {
 };
 
 // biome-ignore lint/style/useImportType: -
-import { ChangeDetectorRef, Component, inject } from "@angular/core";
+import { ChangeDetectorRef, Component } from "@angular/core";
 // biome-ignore lint/style/useImportType: -
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { PokemonClient } from "pokenode-ts";
@@ -23,10 +23,10 @@ export class List {
   start = 1;
   count: number[] = [];
 
-  private router = inject(Router);
   constructor(
     private cdr: ChangeDetectorRef,
     private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   async getList() {
