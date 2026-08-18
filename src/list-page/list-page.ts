@@ -68,7 +68,6 @@ export class List {
 					this.start = Number(params["start"]);
 				} else {
 					this.start = 1;
-					// this.toParam();
 				}
 				await this.getList();
 				this.cdr.markForCheck();
