@@ -2,9 +2,9 @@ import { Component } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 
 @Component({
-  selector: "app-root",
+  selector: "detail-page",
   imports: [RouterOutlet],
-  templateUrl: "./app.html",
-  styleUrl: "./app.css",
+  templateUrl: "./detail-page.html",
+  styleUrl: "./detail-page.css",
 })
-export class App {}
+export class Detail {}

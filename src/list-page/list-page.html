@@ -1,0 +1,22 @@
+<div class="title">ポケモン図鑑</div>
+<div class="list">
+  @for(pokemon of pokemons; track pokemon.id; let i = $index) {
+  <div class="pokemon">
+    <div class="id">{{ pokemon.id }}</div>
+    <div class="name">{{ pokemon.name }}</div>
+  </div>
+  }
+</div>
+
+<div class="pages">
+  <button
+    type="button"
+    (click)="backPage()"
+    [disabled]="start===1"
+    class="pageChangeb"
+  >
+    前
+  </button>
+  <div class="pageNumber">{{ start }}～{{ count[count.length - 1] }}</div>
+  <button type="button" (click)="frontPage()" class="pageChangef">後</button>
+</div>

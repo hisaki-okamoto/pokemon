@@ -1,0 +1,35 @@
+.title {
+  width: 100px;
+  text-align: left;
+  margin-left: calc(50% - 145px);
+  padding: 20px 0;
+}
+.pokemon {
+  padding: 10px;
+  display: flex;
+}
+.id {
+  text-align: center;
+  width: 50px;
+  margin-right: 10px;
+  margin-left: calc(50% - 145px);
+}
+.name {
+  width: 150px;
+  text-align: left;
+}
+.pageChangeb {
+  width: 30px;
+  margin-left: calc(50% - 65px);
+}
+.pageChangef {
+  width: 30px;
+}
+.pages {
+  margin-top: 20px;
+  display: flex;
+}
+.pageNumber {
+  width: 100px;
+  text-align: center;
+}
