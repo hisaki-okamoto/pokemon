@@ -1,0 +1,7 @@
+<div class="title">ポケモン図鑑</div>
+<div class="list">
+	@for(pokemon of pokemons; track count; let i = $index) {
+	<div class="id">{{ pokemon.id }}</div>
+	<div class="name">{{ pokemon.name }}</div>
+	}
+</div>

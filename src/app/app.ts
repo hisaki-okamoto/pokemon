@@ -15,7 +15,7 @@ export class App {
 
 		const pokemon = await api.getPokemonSpeciesByName("luxray");
 
-		console.log(pokemon.names); // "luxray"
+		console.log(pokemon); // "luxray"
 		// console.log(pokemon.types.map((slot) => slot.type.name)); // ["electric"]
 
 		const api2 = new UtilityClient();
