@@ -59,6 +59,14 @@ export class List {
     });
   }
 
+  goDetail(id: number) {
+    this.router.navigate(["/detail"], {
+      queryParams: {
+        id: id,
+      },
+    });
+  }
+
   ngOnInit() {
     this.route.queryParams.subscribe(async (params) => {
       if (params) {
