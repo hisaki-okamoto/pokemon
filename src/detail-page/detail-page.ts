@@ -1,7 +1,7 @@
 /** biome-ignore-all lint/style/useImportType: iranai */
 /** biome-ignore-all lint/complexity/useLiteralKeys: iranai */
 import { ChangeDetectorRef, Component } from "@angular/core";
-import { ActivatedRoute, RouterOutlet } from "@angular/router";
+import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { PokemonClient } from "pokenode-ts";
 import { backfront } from "./backfront/backfront";
 import { type } from "./type/type";
@@ -23,6 +23,7 @@ export class Detail {
   constructor(
     private cdr: ChangeDetectorRef,
     private route: ActivatedRoute,
+    private router: Router,
   ) {}
   api = new PokemonClient();
 
@@ -37,6 +38,18 @@ export class Detail {
       this.types = [...this.types, String(type.names[8].name)];
     }
     this.formatId = this.id.toString().padStart(4, "0");
+  }
+
+  goPage(id: number) {
+    this.toParamSet(id);
+  }
+
+  toParamSet(id: number) {
+    this.router.navigate(["/detail"], {
+      queryParams: {
+        id: id,
+      },
+    });
   }
 
   ngOnInit() {

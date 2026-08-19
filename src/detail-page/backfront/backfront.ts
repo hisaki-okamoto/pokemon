@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import {
   ChangeDetectorRef,
   Component,
+  EventEmitter,
   Input,
   Output,
   type SimpleChanges,
@@ -19,36 +20,44 @@ import { PokemonClient } from "pokenode-ts";
 export class backfront {
   @Input() id: number = 2;
   frontName = "";
-  frontNumber = "";
+  frontNumber = 0;
+  fFormat = "";
   frontSprite = "";
   backName = "";
-  backNumber = "";
+  backNumber = 0;
+  bFormat = "";
   backSprite = "";
 
   constructor(private cdr: ChangeDetectorRef) {}
 
   api = new PokemonClient();
+  @Output() select = new EventEmitter<number>();
 
   async getFront() {
     if (this.id === 1) {
       return;
     }
+    this.frontNumber = this.id - 1;
     const pokemon = await this.api.getPokemonSpeciesById(this.id - 1);
     this.frontName = pokemon.names[9].name;
-    this.frontNumber = String(this.id - 1).padStart(4, "0");
+    this.fFormat = String(this.id - 1).padStart(4, "0");
     this.frontSprite = String(
       (await this.api.getPokemonById(this.id - 1)).sprites.front_default,
     );
   }
 
   async getBack() {
-    console.log(this.id + 3);
+    this.backNumber = this.id + 1;
     const pokemon = await this.api.getPokemonSpeciesById(this.id + 1);
     this.backName = pokemon.names[9].name;
-    this.backNumber = String(this.id + 1).padStart(4, "0");
+    this.bFormat = String(this.id + 1).padStart(4, "0");
     this.backSprite = String(
       (await this.api.getPokemonById(this.id + 1)).sprites.front_default,
     );
+  }
+
+  goPage(id: number) {
+    this.select.emit(id);
   }
 
   async ngOnChanges(id: SimpleChanges) {

@@ -1,7 +1,7 @@
 <div class="all">
-  <div class="singlel" *ngIf="id > 1">
+  <div class="singlel" *ngIf="id > 1" (click)="goPage(frontNumber)">
     <div class="top">
-      <div class="tLeft">No.{{ frontNumber }}</div>
+      <div class="tLeft">No.{{ fFormat }}</div>
       <div class="tRight">
         {{ frontName }}
       </div>
@@ -10,9 +10,9 @@
       <img [src]="frontSprite" alt="front" class="bottom">
     </div>
   </div>
-  <div class="singler">
+  <div class="singler" (click)="goPage(backNumber)">
     <div class="top">
-      <div class="tLeft">No.{{ backNumber }}</div>
+      <div class="tLeft">No.{{ bFormat }}</div>
       <div class="tRight">
         {{ backName }}
       </div>
