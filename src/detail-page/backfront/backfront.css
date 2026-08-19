@@ -1,4 +1,5 @@
 .all {
+  margin: 0 auto;
   display: flex;
 }
 .single {
@@ -8,6 +9,20 @@
   font-size: 20px;
   display: flex;
 }
+.tLeft {
+  font-size: 15px;
+  padding: 5px 0 0 0;
+}
 .bottom {
-  width: 200px;
+  width: 150px;
+  height: 150px;
+  border: 1px solid;
+}
+.singlel {
+  margin-right: auto;
+  margin-left: 25%;
+}
+.singler {
+  margin-left: auto;
+  margin-right: 25%;
 }

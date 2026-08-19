@@ -1,5 +1,5 @@
 <div class="all">
-  <div class="single" *ngIf="id > 1">
+  <div class="singlel" *ngIf="id > 1">
     <div class="top">
       <div class="tLeft">No.{{ frontNumber }}</div>
       <div class="tRight">
@@ -7,10 +7,10 @@
       </div>
     </div>
     <div class="bottom">
-      <img [src]="frontSprite" alt="front">
+      <img [src]="frontSprite" alt="front" class="bottom">
     </div>
   </div>
-  <div class="single">
+  <div class="singler">
     <div class="top">
       <div class="tLeft">No.{{ backNumber }}</div>
       <div class="tRight">
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="bottom">
-      <img [src]="backSprite" alt="back">
+      <img [src]="backSprite" alt="back" class="bottom">
     </div>
   </div>
 </div>
