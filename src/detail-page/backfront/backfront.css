@@ -1,0 +1,13 @@
+.all {
+  display: flex;
+}
+.single {
+  margin: 0 30px;
+}
+.top {
+  font-size: 20px;
+  display: flex;
+}
+.bottom {
+  width: 200px;
+}

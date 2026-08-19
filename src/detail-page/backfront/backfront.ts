@@ -1,8 +1,9 @@
+import { CommonModule } from "@angular/common";
+// biome-ignore lint/style/useImportType: a
 import {
   ChangeDetectorRef,
   Component,
   Input,
-  inject,
   Output,
   type SimpleChanges,
 } from "@angular/core";
@@ -11,12 +12,12 @@ import { PokemonClient } from "pokenode-ts";
 @Component({
   selector: "backfront",
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: "./backfront.html",
   styleUrl: "./backfront.css",
 })
 export class backfront {
-  @Input() id: number = 0;
+  @Input() id: number = 2;
   frontName = "";
   frontNumber = "";
   frontSprite = "";
@@ -24,12 +25,12 @@ export class backfront {
   backNumber = "";
   backSprite = "";
 
-  private cdr = inject(ChangeDetectorRef);
+  constructor(private cdr: ChangeDetectorRef) {}
 
   api = new PokemonClient();
 
   async getFront() {
-    if (this.id === 0) {
+    if (this.id === 1) {
       return;
     }
     const pokemon = await this.api.getPokemonSpeciesById(this.id - 1);
