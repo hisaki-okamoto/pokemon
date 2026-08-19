@@ -6,7 +6,7 @@ export function typeColor(type: string): string {
   } else if (type === "みず") {
     return "#00c0ff";
   } else if (type === "でんき") {
-    return "#ffff00";
+    return "#d0d00a";
   } else if (type === "じめん") {
     return "#b38900";
   } else if (type === "いわ") {
