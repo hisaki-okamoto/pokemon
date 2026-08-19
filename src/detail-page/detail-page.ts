@@ -35,7 +35,7 @@ export class Detail {
     );
     for (let i = 0; i < pokemon.types.length; i++) {
       const type = await this.api.getTypeByName(pokemon.types[i].type.name);
-      this.types.push(String(type.names[8].name));
+      this.types = [...this.types, String(type.names[8].name)];
       console.log(type);
     }
     console.log(this.types);
