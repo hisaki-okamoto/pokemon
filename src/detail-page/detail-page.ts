@@ -8,6 +8,7 @@ import { type } from "./type/type";
 
 @Component({
   selector: "detail-page",
+  standalone: true,
   imports: [RouterOutlet, type, backfront],
   templateUrl: "./detail-page.html",
   styleUrl: "./detail-page.css",

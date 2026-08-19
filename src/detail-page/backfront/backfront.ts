@@ -1,9 +1,12 @@
 import { Component, Input, Output } from "@angular/core";
 
-Component({
+@Component({
   selector: "backfront",
+  standalone: true,
   imports: [],
   templateUrl: "./backfront.html",
   styleUrl: "./backfront.css",
-});
-export class backfront {}
+})
+export class backfront {
+  @Input() id: number = 0;
+}
