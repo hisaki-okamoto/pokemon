@@ -10,13 +10,16 @@ import { typeColor } from "../../app/utils/typeColor";
 })
 export class type {
   @Input() types: string[] = [];
+  getType: string[] = [];
   color: string[] = [];
 
   colorSet() {
-    this.types = [...this.types];
-    for (let i = 0; i < this.types.length; i++) {
+    this.getType.length = 0;
+    this.getType = [...this.types];
+    for (let i = 0; i < this.getType.length; i++) {
       this.color[i] = "background-color:" + typeColor(this.types[i]);
     }
+    this.types.length = 0;
   }
   ngOnChanges(types: SimpleChange) {
     this.colorSet();

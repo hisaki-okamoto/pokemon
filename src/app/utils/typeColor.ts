@@ -1,6 +1,6 @@
 export function typeColor(type: string): string {
   if (type === "くさ") {
-    return "#00ff00";
+    return "#00dd00";
   } else if (type === "ほのお") {
     return "#ff0000";
   } else if (type === "みず") {
