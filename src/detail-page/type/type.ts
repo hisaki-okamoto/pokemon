@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input, Output } from "@angular/core";
 
 Component({
   selector: "type",
@@ -6,4 +6,6 @@ Component({
   templateUrl: "./type.html",
   styleUrl: "./type.css",
 });
-export class type {}
+export class type {
+  @Input() type: string = "";
+}
