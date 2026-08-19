@@ -13,9 +13,16 @@ export class type {
   getType: string[] = [];
   color: string[] = [];
 
+  keepType: string[] = [];
+
   colorSet() {
     this.getType.length = 0;
     this.getType = [...this.types];
+    if (this.getType.length === 0) {
+      this.getType = this.keepType;
+    }
+    this.keepType.length = 0;
+    this.keepType = this.getType;
     for (let i = 0; i < this.getType.length; i++) {
       this.color[i] = "background-color:" + typeColor(this.types[i]);
     }
