@@ -9,13 +9,9 @@
   font-size: 20px;
   display: flex;
 }
-.tLeft {
-  font-size: 15px;
-  padding: 5px 0 0 0;
-}
 .bottom {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   border: 1px solid;
 }
 .singlel {
