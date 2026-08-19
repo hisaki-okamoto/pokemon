@@ -28,7 +28,6 @@ export class Detail {
 
   async getData() {
     const pokemon = await this.api.getPokemonById(this.id);
-    console.log(pokemon);
     this.sprite = String(pokemon.sprites.front_default);
     this.name = String(
       (await this.api.getPokemonSpeciesById(this.id)).names[9].name,
@@ -36,9 +35,7 @@ export class Detail {
     for (let i = 0; i < pokemon.types.length; i++) {
       const type = await this.api.getTypeByName(pokemon.types[i].type.name);
       this.types = [...this.types, String(type.names[8].name)];
-      console.log(type);
     }
-    console.log(this.types);
     this.formatId = this.id.toString().padStart(4, "0");
   }
 

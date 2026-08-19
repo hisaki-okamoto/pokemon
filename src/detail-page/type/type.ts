@@ -11,10 +11,6 @@ import { typeColor } from "../../app/utils/typeColor";
 export class type {
   @Input() types: string[] = [];
   color: string[] = [];
-  ice = "こおり";
-  stil = "はがね";
-  a = "";
-  b = "";
 
   colorSet() {
     this.types = [...this.types];

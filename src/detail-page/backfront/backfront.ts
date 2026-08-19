@@ -1,4 +1,12 @@
-import { Component, Input, Output } from "@angular/core";
+import {
+  ChangeDetectorRef,
+  Component,
+  Input,
+  inject,
+  Output,
+  type SimpleChanges,
+} from "@angular/core";
+import { PokemonClient } from "pokenode-ts";
 
 @Component({
   selector: "backfront",
@@ -9,4 +17,43 @@ import { Component, Input, Output } from "@angular/core";
 })
 export class backfront {
   @Input() id: number = 0;
+  frontName = "";
+  frontNumber = "";
+  frontSprite = "";
+  backName = "";
+  backNumber = "";
+  backSprite = "";
+
+  private cdr = inject(ChangeDetectorRef);
+
+  api = new PokemonClient();
+
+  async getFront() {
+    if (this.id === 0) {
+      return;
+    }
+    const pokemon = await this.api.getPokemonSpeciesById(this.id - 1);
+    this.frontName = pokemon.names[9].name;
+    this.frontNumber = String(this.id - 1).padStart(4, "0");
+    this.frontSprite = String(
+      (await this.api.getPokemonById(this.id - 1)).sprites.front_default,
+    );
+  }
+
+  async getBack() {
+    console.log(this.id + 3);
+    const pokemon = await this.api.getPokemonSpeciesById(this.id + 1);
+    this.backName = pokemon.names[9].name;
+    this.backNumber = String(this.id + 1).padStart(4, "0");
+    this.backSprite = String(
+      (await this.api.getPokemonById(this.id + 1)).sprites.front_default,
+    );
+  }
+
+  async ngOnChanges(id: SimpleChanges) {
+    this.id = Number(this.id);
+    await this.getFront();
+    await this.getBack();
+    this.cdr.markForCheck();
+  }
 }

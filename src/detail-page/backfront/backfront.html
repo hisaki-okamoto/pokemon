@@ -1,1 +1,25 @@
 {{ id }}
+<div class="all">
+  <div class="single">
+    <div class="top">
+      <div class="tLeft">No.{{ frontNumber }}</div>
+      <div class="tRight">
+        {{ frontName }}
+      </div>
+    </div>
+    <div class="bottom">
+      <img [src]="frontSprite" alt="front">
+    </div>
+  </div>
+  <div class="single">
+    <div class="top">
+      <div class="tLeft">No.{{ backNumber }}</div>
+      <div class="tRight">
+        {{ backName }}
+      </div>
+    </div>
+    <div class="bottom">
+      <img [src]="backSprite" alt="back">
+    </div>
+  </div>
+</div>
