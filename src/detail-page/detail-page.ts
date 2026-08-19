@@ -3,10 +3,12 @@
 import { ChangeDetectorRef, Component } from "@angular/core";
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { PokemonClient } from "pokenode-ts";
+import { backfront } from "./backfront/backfront";
+import { type } from "./type/type";
 
 @Component({
   selector: "detail-page",
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, type, backfront],
   templateUrl: "./detail-page.html",
   styleUrl: "./detail-page.css",
 })
