@@ -83,12 +83,7 @@ export class Stats {
     this.min = data;
   }
 
-  constructor() {
-    console.log("ssssssssssss");
-  }
-
   ngOnChanges() {
-    console.log(this.pokemonData);
     this.getStats();
     this.getMax();
     this.getnMax();

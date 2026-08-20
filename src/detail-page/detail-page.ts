@@ -43,7 +43,6 @@ export class Detail {
   async getData() {
     //データを取得
     const pokemon = await this.api.getPokemonById(this.id);
-    console.log(pokemon);
     //メインで表示するのに必要なデータ
     this.sprite = String(pokemon.sprites.front_default);
     this.shiny = String(pokemon.sprites.front_shiny);
