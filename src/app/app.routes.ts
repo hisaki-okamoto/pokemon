@@ -1,7 +1,7 @@
 import type { Routes } from "@angular/router";
 import { backfront } from "../detail-page/backfront/backfront";
 import { Detail } from "../detail-page/detail-page";
-import { stats } from "../detail-page/stats/stats;";
+import { stats } from "../detail-page/stats/stats";
 import { type } from "../detail-page/type/type";
 import { List } from "../list-page/list-page";
 

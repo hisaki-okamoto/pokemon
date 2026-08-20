@@ -1,15 +1,25 @@
 /** biome-ignore-all lint/style/useImportType: iranai */
 /** biome-ignore-all lint/complexity/useLiteralKeys: iranai */
+type Data = {
+  H: number;
+  A: number;
+  B: number;
+  C: number;
+  D: number;
+  S: number;
+};
+
 import { ChangeDetectorRef, Component } from "@angular/core";
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { PokemonClient } from "pokenode-ts";
 import { backfront } from "./backfront/backfront";
+import { stats } from "./stats/stats";
 import { type } from "./type/type";
 
 @Component({
   selector: "detail-page",
   standalone: true,
-  imports: [RouterOutlet, type, backfront],
+  imports: [RouterOutlet, type, backfront, stats],
   templateUrl: "./detail-page.html",
   styleUrl: "./detail-page.css",
 })
@@ -20,6 +30,7 @@ export class Detail {
   types: string[] = [];
   formatId = "";
   dataType: string[] = [];
+  pokemonData: Data = { H: 0, A: 0, B: 0, C: 0, D: 0, S: 0 };
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -31,6 +42,7 @@ export class Detail {
   async getData() {
     //データを取得
     const pokemon = await this.api.getPokemonById(this.id);
+    console.log(pokemon);
     //メインで表示するのに必要なデータ
     this.sprite = String(pokemon.sprites.front_default);
     this.name = String(
@@ -42,6 +54,15 @@ export class Detail {
       const type = await this.api.getTypeByName(pokemon.types[i].type.name);
       this.types = [...this.types, String(type.names[8].name)];
     }
+    this.pokemonData = {
+      H: Number(pokemon.stats[0].base_stat),
+      A: Number(pokemon.stats[1].base_stat),
+      B: Number(pokemon.stats[2].base_stat),
+      C: Number(pokemon.stats[3].base_stat),
+      D: Number(pokemon.stats[4].base_stat),
+      S: Number(pokemon.stats[5].base_stat),
+    };
+    console.log(this.pokemonData);
     //コンポーネントに渡す用
     this.dataType = this.types;
     //図鑑番号を0001みたいにするやつ
