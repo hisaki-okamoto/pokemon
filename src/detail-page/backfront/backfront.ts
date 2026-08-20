@@ -17,15 +17,11 @@ import { PokemonClient } from "pokenode-ts";
   styleUrl: "./backfront.css",
 })
 export class backfront {
-  @Input() id: number = 2;
-  frontName = "";
-  frontNumber = 0;
-  fFormat = "";
-  frontSprite = "";
-  backName = "";
-  backNumber = 0;
-  bFormat = "";
-  backSprite = "";
+  @Input() id: number = 0;
+  Name = "";
+  Number = 0;
+  Format = "";
+  Sprite = "";
 
   constructor(private cdr: ChangeDetectorRef) {}
 
@@ -33,27 +29,16 @@ export class backfront {
   @Output() select = new EventEmitter<number>();
 
   //図鑑番号が一個前のやつ取得してきてる
-  async getFront() {
-    if (this.id === 1) {
+  async getData() {
+    if (this.id === 0) {
       return;
     }
-    this.frontNumber = this.id - 1;
-    const pokemon = await this.api.getPokemonSpeciesById(this.id - 1);
-    this.frontName = pokemon.names[9].name;
-    this.fFormat = String(this.id - 1).padStart(4, "0");
-    this.frontSprite = String(
-      (await this.api.getPokemonById(this.id - 1)).sprites.front_default,
-    );
-  }
-
-  //図鑑番号一個後
-  async getBack() {
-    this.backNumber = this.id + 1;
-    const pokemon = await this.api.getPokemonSpeciesById(this.id + 1);
-    this.backName = pokemon.names[9].name;
-    this.bFormat = String(this.id + 1).padStart(4, "0");
-    this.backSprite = String(
-      (await this.api.getPokemonById(this.id + 1)).sprites.front_default,
+    this.Number = this.id;
+    const pokemon = await this.api.getPokemonSpeciesById(this.id);
+    this.Name = pokemon.names[9].name;
+    this.Format = String(this.id).padStart(4, "0");
+    this.Sprite = String(
+      (await this.api.getPokemonById(this.id)).sprites.front_default,
     );
   }
 
@@ -63,8 +48,7 @@ export class backfront {
 
   async ngOnChanges() {
     this.id = Number(this.id);
-    await this.getFront();
-    await this.getBack();
+    await this.getData();
     this.cdr.markForCheck();
   }
 }
