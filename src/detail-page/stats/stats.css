@@ -1,4 +1,6 @@
 table {
+  margin-left: calc(50% - 215px);
+  margin-bottom: 10px;
   border-collapse: collapse;
   width: 430px;
 }
