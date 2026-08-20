@@ -1,4 +1,5 @@
-import { Component, Input } from "@angular/core";
+/** biome-ignore-all lint/complexity/useLiteralKeys:a*/
+import { Component, Input, type SimpleChanges } from "@angular/core";
 import { typeColor } from "../../app/utils/typeColor";
 
 @Component({
@@ -38,7 +39,9 @@ export class type {
     this.dataType.length = 0;
   }
 
-  ngOnChanges() {
-    this.colorSet();
+  ngOnChanges(changeges: SimpleChanges) {
+    if (changeges["dataType"]) {
+      this.colorSet();
+    }
   }
 }

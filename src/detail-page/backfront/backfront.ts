@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/complexity/useLiteralKeys: a */
 import { CommonModule } from "@angular/common";
 // biome-ignore lint/style/useImportType: a
 import {
@@ -6,6 +7,7 @@ import {
   EventEmitter,
   Input,
   Output,
+  SimpleChanges,
 } from "@angular/core";
 import { PokemonClient } from "pokenode-ts";
 
@@ -46,9 +48,11 @@ export class backfront {
     this.select.emit(id);
   }
 
-  async ngOnChanges() {
-    this.id = Number(this.id);
-    await this.getData();
-    this.cdr.markForCheck();
+  async ngOnChanges(changeges: SimpleChanges) {
+    if (changeges["id"]) {
+      this.id = Number(this.id);
+      await this.getData();
+      this.cdr.markForCheck();
+    }
   }
 }
