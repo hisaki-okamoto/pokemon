@@ -6,6 +6,9 @@
       <div class="name">{{ name }}</div>
     </div>
     <div class="type"><type [dataType]="dataType"></type></div>
+    <div class="shiny">
+      <img [src]="shiny" alt="shiny" class="shiny" (click)="changeShiny()">
+    </div>
   </div>
 </div>
 <div class="stats">

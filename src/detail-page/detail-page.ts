@@ -14,13 +14,12 @@ import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { PokemonClient } from "pokenode-ts";
 import { Backfront } from "./backfront/backfront";
 import { Stats } from "./stats/stats";
-import { Text } from "./textSprite/textSprite";
 import { Type } from "./type/type";
 
 @Component({
   selector: "detail-page",
   standalone: true,
-  imports: [RouterOutlet, Type, Backfront, Stats, Text],
+  imports: [RouterOutlet, Type, Backfront, Stats],
   templateUrl: "./detail-page.html",
   styleUrl: "./detail-page.css",
 })
@@ -32,6 +31,7 @@ export class Detail {
   formatId = "";
   dataType: string[] = [];
   pokemonData: Data = { H: 0, A: 0, B: 0, C: 0, D: 0, S: 0 };
+  shiny = "";
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -46,9 +46,9 @@ export class Detail {
     console.log(pokemon);
     //メインで表示するのに必要なデータ
     this.sprite = String(pokemon.sprites.front_default);
-    this.name = String(
-      (await this.api.getPokemonSpeciesById(this.id)).names[9].name,
-    );
+    this.shiny = String(pokemon.sprites.front_shiny);
+    const jp = await this.api.getPokemonSpeciesById(this.id);
+    this.name = jp.names[9].name;
     //タイプを配列にする
     //一つずつ日本語化をしている
     for (let i = 0; i < pokemon.types.length; i++) {
@@ -63,11 +63,17 @@ export class Detail {
       D: Number(pokemon.stats[4].base_stat),
       S: Number(pokemon.stats[5].base_stat),
     };
-    console.log(this.pokemonData);
     //コンポーネントに渡す用
     this.dataType = this.types;
     //図鑑番号を0001みたいにするやつ
     this.formatId = this.id.toString().padStart(4, "0");
+  }
+
+  //色違いをクリックすると通常と入れ替える
+  changeShiny() {
+    const keep = this.shiny;
+    this.shiny = this.sprite;
+    this.sprite = keep;
   }
 
   goPage(id: number) {
