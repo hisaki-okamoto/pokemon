@@ -1,6 +1,20 @@
-@for (stat of stats; track $index;let i = $index) {
-<tr>
-  <td>{{ type[i] }}</td>
-  <td>{{ stat }}</td>
-</tr>
-}
+<table>
+  <tr>
+    <td></td>
+    <td>種族値</td>
+    <td>MAX</td>
+    <td>NMAX</td>
+    <td>NORMAL</td>
+    <td>MIN</td>
+  </tr>
+  @for (stat of stats; track $index;let i = $index) {
+  <tr class="stats">
+    <td>{{ type[i] }}</td>
+    <td>{{ stat }}</td>
+    <td>@if(i > 0) { {{ max[i] }} }</td>
+    <td>{{ nMax[i] }}</td>
+    <td>{{ normal[i] }}</td>
+    <td>@if(i > 0) { {{ min[i] }} }</td>
+  </tr>
+  }
+</table>
