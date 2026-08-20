@@ -6,7 +6,6 @@ import {
   EventEmitter,
   Input,
   Output,
-  type SimpleChanges,
 } from "@angular/core";
 import { PokemonClient } from "pokenode-ts";
 
@@ -33,6 +32,7 @@ export class backfront {
   api = new PokemonClient();
   @Output() select = new EventEmitter<number>();
 
+  //図鑑番号が一個前のやつ取得してきてる
   async getFront() {
     if (this.id === 1) {
       return;
@@ -46,6 +46,7 @@ export class backfront {
     );
   }
 
+  //図鑑番号一個後
   async getBack() {
     this.backNumber = this.id + 1;
     const pokemon = await this.api.getPokemonSpeciesById(this.id + 1);
@@ -60,7 +61,7 @@ export class backfront {
     this.select.emit(id);
   }
 
-  async ngOnChanges(id: SimpleChanges) {
+  async ngOnChanges() {
     this.id = Number(this.id);
     await this.getFront();
     await this.getBack();

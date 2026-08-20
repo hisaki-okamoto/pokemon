@@ -29,16 +29,22 @@ export class Detail {
   api = new PokemonClient();
 
   async getData() {
+    //データを取得
     const pokemon = await this.api.getPokemonById(this.id);
+    //メインで表示するのに必要なデータ
     this.sprite = String(pokemon.sprites.front_default);
     this.name = String(
       (await this.api.getPokemonSpeciesById(this.id)).names[9].name,
     );
+    //タイプを配列にする
+    //一つずつ日本語化をしている
     for (let i = 0; i < pokemon.types.length; i++) {
       const type = await this.api.getTypeByName(pokemon.types[i].type.name);
       this.types = [...this.types, String(type.names[8].name)];
     }
+    //コンポーネントに渡す用
     this.dataType = this.types;
+    //図鑑番号を0001みたいにするやつ
     this.formatId = this.id.toString().padStart(4, "0");
   }
 
