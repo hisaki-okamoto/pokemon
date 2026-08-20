@@ -16,7 +16,7 @@ import { PokemonClient } from "pokenode-ts";
   templateUrl: "./backfront.html",
   styleUrl: "./backfront.css",
 })
-export class backfront {
+export class Backfront {
   @Input() id: number = 2;
   frontName = "";
   frontNumber = 0;

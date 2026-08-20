@@ -17,7 +17,7 @@ import { Component, Input } from "@angular/core";
   templateUrl: "./stats.html",
   styleUrl: "./stats.css",
 })
-export class stats {
+export class Stats {
   @Input() pokemonData: Data = { H: 0, A: 0, B: 0, C: 0, D: 0, S: 0 };
   type: string[] = ["HP", "攻撃", "防御", "特攻", "特防", "すばやさ"];
   stats: number[] = [];
