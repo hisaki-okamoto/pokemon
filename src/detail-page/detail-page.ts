@@ -12,14 +12,15 @@ type Data = {
 import { ChangeDetectorRef, Component } from "@angular/core";
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { PokemonClient } from "pokenode-ts";
-import { backfront } from "./backfront/backfront";
-import { stats } from "./stats/stats";
-import { type } from "./type/type";
+import { Backfront } from "./backfront/backfront";
+import { Stats } from "./stats/stats";
+import { Text } from "./textSprite/textSprite";
+import { Type } from "./type/type";
 
 @Component({
   selector: "detail-page",
   standalone: true,
-  imports: [RouterOutlet, type, backfront, stats],
+  imports: [RouterOutlet, Type, Backfront, Stats, Text],
   templateUrl: "./detail-page.html",
   styleUrl: "./detail-page.css",
 })
