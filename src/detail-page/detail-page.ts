@@ -19,6 +19,7 @@ export class Detail {
   name = "";
   types: string[] = [];
   formatId = "";
+  dataType: string[] = [];
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -37,6 +38,7 @@ export class Detail {
       const type = await this.api.getTypeByName(pokemon.types[i].type.name);
       this.types = [...this.types, String(type.names[8].name)];
     }
+    this.dataType = this.types;
     this.formatId = this.id.toString().padStart(4, "0");
   }
 

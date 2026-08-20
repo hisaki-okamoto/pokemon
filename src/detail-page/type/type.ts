@@ -1,4 +1,4 @@
-import { Component, Input, type SimpleChange } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { typeColor } from "../../app/utils/typeColor";
 
 @Component({
@@ -9,7 +9,7 @@ import { typeColor } from "../../app/utils/typeColor";
   styleUrl: "./type.css",
 })
 export class type {
-  @Input() types: string[] = [];
+  @Input() dataType: string[] = [];
   getType: string[] = [];
   color: string[] = [];
 
@@ -17,18 +17,18 @@ export class type {
 
   colorSet() {
     this.getType.length = 0;
-    this.getType = [...this.types];
+    this.getType = [...this.dataType];
     if (this.getType.length === 0) {
       this.getType = this.keepType;
     }
     this.keepType.length = 0;
     this.keepType = this.getType;
     for (let i = 0; i < this.getType.length; i++) {
-      this.color[i] = "background-color:" + typeColor(this.types[i]);
+      this.color[i] = `background-color:${typeColor(this.dataType[i])}`;
     }
-    this.types.length = 0;
+    this.dataType.length = 0;
   }
-  ngOnChanges(types: SimpleChange) {
+  ngOnChanges() {
     this.colorSet();
   }
 }
