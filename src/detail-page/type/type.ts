@@ -1,5 +1,6 @@
-import { Component, Input } from "@angular/core";
-import { typeColor } from "../../app/utils/typeColor";
+/** biome-ignore-all lint/complexity/useLiteralKeys:a*/
+import { Component, Input, type SimpleChanges } from "@angular/core";
+import { type pokemonType, typeColor } from "../../app/utils/typeColor";
 
 @Component({
   selector: "type",
@@ -32,13 +33,16 @@ export class Type {
     this.keepType = this.getType;
     //一つずつ色データを作る
     for (let i = 0; i < this.getType.length; i++) {
-      this.color[i] = `background-color:${typeColor(this.dataType[i])}`;
+      this.color[i] =
+        `background-color:${typeColor(this.dataType[i] as pokemonType)}`;
     }
     //inputのところをリセットしないとタイプが増える
     this.dataType.length = 0;
   }
 
-  ngOnChanges() {
-    this.colorSet();
+  ngOnChanges(changeges: SimpleChanges) {
+    if (changeges["dataType"]) {
+      this.colorSet();
+    }
   }
 }

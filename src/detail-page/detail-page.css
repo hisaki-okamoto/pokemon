@@ -25,3 +25,12 @@
   width: 130px;
   height: 130px;
 }
+.backfront {
+  width: 600px;
+  margin-left: calc(50% - 300px);
+  display: flex;
+}
+.nb {
+  margin: 0 5vw;
+  width: 30%;
+}

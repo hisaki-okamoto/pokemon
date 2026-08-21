@@ -16,5 +16,6 @@
   <div class="stats"><stats [pokemonData]="pokemonData"></stats></div>
 </div>
 <div class="backfront">
-  <backfront [id]="id" (select)="goPage($event)"></backfront>
+  <backfront [id]="id-1" (select)="goPage($event)" class="nb"></backfront>
+  <backfront [id]="(+id) + 1" (select)="goPage($event)" class="nb"></backfront>
 </div>

@@ -46,7 +46,7 @@ export class Detail {
     //データを取得
     const pokemon = await this.api.getPokemonById(this.id);
     //メインで表示するのに必要なデータ
-    this.sprite = String(pokemon.sprites.front_default);
+    this.sprite = pokemon.sprites.front_default as string;
     this.shiny = pokemon.sprites.front_shiny as string;
     for (let i = 0; i < pokemon.abilities.length; i++) {
       this.abilities = [...this.abilities, pokemon.abilities[i].ability.name];

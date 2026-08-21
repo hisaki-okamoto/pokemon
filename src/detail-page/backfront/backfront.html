@@ -1,24 +1,11 @@
-<div class="all">
-  <div class="singlel" *ngIf="id > 1" (click)="goPage(frontNumber)">
-    <div class="top">
-      <div class="tLeft">No.{{ fFormat }}</div>
-      <div class="tRight">
-        {{ frontName }}
-      </div>
-    </div>
-    <div class="bottom">
-      <img [src]="frontSprite" alt="front" class="bottom">
+<div class="singlel" *ngIf="id > 0" (click)="goPage(Number)">
+  <div class="top">
+    <div>No.{{ Format }}</div>
+    <div>
+      {{ Name }}
     </div>
   </div>
-  <div class="singler" (click)="goPage(backNumber)">
-    <div class="top">
-      <div class="tLeft">No.{{ bFormat }}</div>
-      <div class="tRight">
-        {{ backName }}
-      </div>
-    </div>
-    <div class="bottom">
-      <img [src]="backSprite" alt="back" class="bottom">
-    </div>
+  <div class="bottom">
+    <img [src]="Sprite" alt="Sprite" class="bottom">
   </div>
 </div>

@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/complexity/useLiteralKeys: a */
 import { CommonModule } from "@angular/common";
 // biome-ignore lint/style/useImportType: a
 import {
@@ -6,6 +7,7 @@ import {
   EventEmitter,
   Input,
   Output,
+  SimpleChanges,
 } from "@angular/core";
 import { PokemonClient } from "pokenode-ts";
 
@@ -17,15 +19,11 @@ import { PokemonClient } from "pokenode-ts";
   styleUrl: "./backfront.css",
 })
 export class Backfront {
-  @Input() id: number = 2;
-  frontName = "";
-  frontNumber = 0;
-  fFormat = "";
-  frontSprite = "";
-  backName = "";
-  backNumber = 0;
-  bFormat = "";
-  backSprite = "";
+  @Input() id: number = 0;
+  Name = "";
+  Number = 0;
+  Format = "";
+  Sprite = "";
 
   constructor(private cdr: ChangeDetectorRef) {}
 
@@ -33,36 +31,28 @@ export class Backfront {
   @Output() select = new EventEmitter<number>();
 
   //図鑑番号が一個前のやつ取得してきてる
-  async getFront() {
-    if (this.id === 1) {
+  async getData() {
+    if (this.id === 0) {
       return;
     }
-    this.frontNumber = this.id - 1;
-    const pokemon = await this.api.getPokemonSpeciesById(this.id - 1);
-    this.frontName = pokemon.names[9].name;
-    this.fFormat = String(this.id - 1).padStart(4, "0");
-    this.frontSprite = (await this.api.getPokemonById(this.id - 1)).sprites
-      .front_default as string;
-  }
-
-  //図鑑番号一個後
-  async getBack() {
-    this.backNumber = this.id + 1;
-    const pokemon = await this.api.getPokemonSpeciesById(this.id + 1);
-    this.backName = pokemon.names[9].name;
-    this.bFormat = String(this.id + 1).padStart(4, "0");
-    this.backSprite = (await this.api.getPokemonById(this.id + 1)).sprites
-      .front_default as string;
+    this.Number = this.id;
+    const pokemon = await this.api.getPokemonSpeciesById(this.id);
+    this.Name = pokemon.names[9].name;
+    this.Format = String(this.id).padStart(4, "0");
+    this.Sprite = String(
+      (await this.api.getPokemonById(this.id)).sprites.front_default,
+    );
   }
 
   goPage(id: number) {
     this.select.emit(id);
   }
 
-  async ngOnChanges() {
-    this.id = Number(this.id);
-    await this.getFront();
-    await this.getBack();
-    this.cdr.markForCheck();
+  async ngOnChanges(changeges: SimpleChanges) {
+    if (changeges["id"]) {
+      this.id = Number(this.id);
+      await this.getData();
+      this.cdr.markForCheck();
+    }
   }
 }
