@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/complexity/useLiteralKeys: <explanation> */
 type Data = {
   H: number;
   A: number;
@@ -8,7 +9,7 @@ type Data = {
 };
 
 import { CommonModule } from "@angular/common";
-import { Component, Input } from "@angular/core";
+import { Component, Input, type SimpleChanges } from "@angular/core";
 
 @Component({
   selector: "stats",
@@ -83,11 +84,13 @@ export class Stats {
     this.min = data;
   }
 
-  ngOnChanges() {
-    this.getStats();
-    this.getMax();
-    this.getnMax();
-    this.getNormal();
-    this.getMin();
+  ngOnChanges(ngOnChanges: SimpleChanges) {
+    if (ngOnChanges["pokemonData"]) {
+      this.getStats();
+      this.getMax();
+      this.getnMax();
+      this.getNormal();
+      this.getMin();
+    }
   }
 }
