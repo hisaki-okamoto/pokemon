@@ -1,4 +1,24 @@
-export function typeColor(type: string): string {
+export type pokemonType =
+  | "くさ"
+  | "ほのお"
+  | "みず"
+  | "でんき"
+  | "じめん"
+  | "いわ"
+  | "こおり"
+  | "かくとう"
+  | "どく"
+  | "ひこう"
+  | "エスパー"
+  | "むし"
+  | "ゴースト"
+  | "ドラゴン"
+  | "あく"
+  | "はがね"
+  | "フェアリー"
+  | "ノーマル";
+
+export function typeColor(type: pokemonType): string {
   if (type === "くさ") {
     return "#00dd00";
   } else if (type === "ほのお") {
