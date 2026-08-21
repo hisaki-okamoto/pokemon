@@ -1,4 +1,5 @@
 import type { Routes } from "@angular/router";
+import { Abilities } from "../detail-page/abilities/abilities";
 import { Backfront } from "../detail-page/backfront/backfront";
 import { Detail } from "../detail-page/detail-page";
 import { Stats } from "../detail-page/stats/stats";
@@ -11,4 +12,5 @@ export const routes: Routes = [
   { path: "type", component: Type },
   { path: "backfront", component: Backfront },
   { path: "stats", component: Stats },
+  { path: "Abilities", component: Abilities },
 ];

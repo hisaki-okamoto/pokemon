@@ -12,6 +12,7 @@ type Data = {
 import { ChangeDetectorRef, Component } from "@angular/core";
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { PokemonClient } from "pokenode-ts";
+import { Abilities } from "./abilities/abilities";
 import { Backfront } from "./backfront/backfront";
 import { Stats } from "./stats/stats";
 import { Type } from "./type/type";
@@ -19,7 +20,7 @@ import { Type } from "./type/type";
 @Component({
   selector: "detail-page",
   standalone: true,
-  imports: [RouterOutlet, Type, Backfront, Stats],
+  imports: [RouterOutlet, Type, Backfront, Stats, Abilities],
   templateUrl: "./detail-page.html",
   styleUrl: "./detail-page.css",
 })
@@ -32,6 +33,7 @@ export class Detail {
   dataType: string[] = [];
   pokemonData: Data = { H: 0, A: 0, B: 0, C: 0, D: 0, S: 0 };
   shiny = "";
+  abilities: string[] = [];
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -46,6 +48,9 @@ export class Detail {
     //メインで表示するのに必要なデータ
     this.sprite = String(pokemon.sprites.front_default);
     this.shiny = String(pokemon.sprites.front_shiny);
+    for (let i = 0; i < pokemon.abilities.length; i++) {
+      this.abilities = [...this.abilities, pokemon.abilities[i].ability.name];
+    }
     const jp = await this.api.getPokemonSpeciesById(this.id);
     this.name = jp.names[9].name;
     //タイプを配列にする
