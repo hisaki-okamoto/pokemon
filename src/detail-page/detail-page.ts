@@ -32,15 +32,13 @@ export class Detail {
     //データを取得
     const pokemon = await this.api.getPokemonById(this.id);
     //メインで表示するのに必要なデータ
-    this.sprite = String(pokemon.sprites.front_default);
-    this.name = String(
-      (await this.api.getPokemonSpeciesById(this.id)).names[9].name,
-    );
+    this.sprite = pokemon.sprites.front_default as string;
+    this.name = (await this.api.getPokemonSpeciesById(this.id)).names[9].name;
     //タイプを配列にする
     //一つずつ日本語化をしている
     for (let i = 0; i < pokemon.types.length; i++) {
       const type = await this.api.getTypeByName(pokemon.types[i].type.name);
-      this.types = [...this.types, String(type.names[8].name)];
+      this.types = [...this.types, type.names[8].name as string];
     }
     //コンポーネントに渡す用
     this.dataType = this.types;
