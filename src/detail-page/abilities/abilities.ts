@@ -26,7 +26,7 @@ export class Abilities {
     this.ability.length = 0;
     for (let i = 0; i < this.abilities.length; i++) {
       const get = await this.api.getAbilityByName(this.abilities[i]);
-      this.ability = [...this.ability, String(get.names[0].name)];
+      this.ability = [...this.ability, get.names[0].name as string];
     }
     console.log(this.ability);
     this.abilities.length = 0;

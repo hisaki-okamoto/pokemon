@@ -47,7 +47,7 @@ export class Detail {
     const pokemon = await this.api.getPokemonById(this.id);
     //メインで表示するのに必要なデータ
     this.sprite = String(pokemon.sprites.front_default);
-    this.shiny = String(pokemon.sprites.front_shiny);
+    this.shiny = pokemon.sprites.front_shiny as string;
     for (let i = 0; i < pokemon.abilities.length; i++) {
       this.abilities = [...this.abilities, pokemon.abilities[i].ability.name];
     }
@@ -57,15 +57,15 @@ export class Detail {
     //一つずつ日本語化をしている
     for (let i = 0; i < pokemon.types.length; i++) {
       const type = await this.api.getTypeByName(pokemon.types[i].type.name);
-      this.types = [...this.types, String(type.names[8].name)];
+      this.types = [...this.types, type.names[8].name as string];
     }
     this.pokemonData = {
-      H: Number(pokemon.stats[0].base_stat),
-      A: Number(pokemon.stats[1].base_stat),
-      B: Number(pokemon.stats[2].base_stat),
-      C: Number(pokemon.stats[3].base_stat),
-      D: Number(pokemon.stats[4].base_stat),
-      S: Number(pokemon.stats[5].base_stat),
+      H: pokemon.stats[0].base_stat as number,
+      A: pokemon.stats[1].base_stat as number,
+      B: pokemon.stats[2].base_stat as number,
+      C: pokemon.stats[3].base_stat as number,
+      D: pokemon.stats[4].base_stat as number,
+      S: pokemon.stats[5].base_stat as number,
     };
     //コンポーネントに渡す用
     this.dataType = this.types;

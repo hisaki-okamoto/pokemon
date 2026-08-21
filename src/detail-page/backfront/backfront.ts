@@ -41,9 +41,8 @@ export class Backfront {
     const pokemon = await this.api.getPokemonSpeciesById(this.id - 1);
     this.frontName = pokemon.names[9].name;
     this.fFormat = String(this.id - 1).padStart(4, "0");
-    this.frontSprite = String(
-      (await this.api.getPokemonById(this.id - 1)).sprites.front_default,
-    );
+    this.frontSprite = (await this.api.getPokemonById(this.id - 1)).sprites
+      .front_default as string;
   }
 
   //図鑑番号一個後
@@ -52,9 +51,8 @@ export class Backfront {
     const pokemon = await this.api.getPokemonSpeciesById(this.id + 1);
     this.backName = pokemon.names[9].name;
     this.bFormat = String(this.id + 1).padStart(4, "0");
-    this.backSprite = String(
-      (await this.api.getPokemonById(this.id + 1)).sprites.front_default,
-    );
+    this.backSprite = (await this.api.getPokemonById(this.id + 1)).sprites
+      .front_default as string;
   }
 
   goPage(id: number) {
