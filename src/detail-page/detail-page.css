@@ -1,0 +1,30 @@
+.data {
+  display: flex;
+  width: 500px;
+  margin: 20px auto;
+  margin-left: calc(50vw - 250px);
+}
+.pokemon {
+  display: flex;
+}
+.sprite {
+  width: 220px;
+  height: 220px;
+  border: 1.5px solid;
+}
+.id {
+  margin: 0 10px;
+  font-size: 20px;
+}
+.name {
+  font-size: 20px;
+}
+.backfront {
+  width: 600px;
+  margin-left: calc(50% - 300px);
+  display: flex;
+}
+.nb {
+  margin: 0 5vw;
+  width: 30%;
+}

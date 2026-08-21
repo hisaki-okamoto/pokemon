@@ -1,0 +1,5 @@
+<div class="types">
+  @for(type of getType; track $index; let i = $index) {
+  <div class="type" [style]="color[i]">{{ type }}</div>
+  }
+</div>

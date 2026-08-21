@@ -1,0 +1,14 @@
+<div class="data">
+  <img [src]="sprite" alt="sprite" class="sprite">
+  <div class="pokemonall">
+    <div class="pokemon">
+      <div class="id">No.{{ formatId }}</div>
+      <div class="name">{{ name }}</div>
+    </div>
+    <div class="type"><type [dataType]="dataType"></type></div>
+  </div>
+</div>
+<div class="backfront">
+  <backfront [id]="id-1" (select)="goPage($event)" class="nb"></backfront>
+  <backfront [id]="(+id) + 1" (select)="goPage($event)" class="nb"></backfront>
+</div>

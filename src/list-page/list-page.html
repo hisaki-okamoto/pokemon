@@ -1,7 +1,7 @@
 <div class="title">ポケモン図鑑</div>
 <div class="list">
   @for(pokemon of pokemons; track pokemon.id; let i = $index) {
-  <div class="pokemon">
+  <div class="pokemon" (click)="goDetail(pokemon.id)">
     <div class="id">{{ pokemon.id }}</div>
     <div class="name">{{ pokemon.name }}</div>
   </div>
