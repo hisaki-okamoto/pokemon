@@ -9,7 +9,7 @@ import { type pokemonType, typeColor } from "../../app/utils/typeColor";
   templateUrl: "./type.html",
   styleUrl: "./type.css",
 })
-export class type {
+export class Type {
   @Input() dataType: string[] = [];
   getType: string[] = [];
   color: string[] = [];
